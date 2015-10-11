@@ -1,13 +1,17 @@
 ---
-- name: maven settings for QA CentOS machine
-  hosts: qa
+- name: Install Apache Maven on CentOS vm
+  hosts: centos
   sudo: true
+  vars:
+    download_url: http://apache.mirror.serversaustralia.com.au/maven/maven-3/3.3.3/binaries/apache-maven-3.3.3-bin.tar.gz
+    download_folder: /tmp/
+    maven_archive: "{{download_folder}}/apache-maven-3.3.3-bin.tar.gz"
   tasks:
+    - name: Download apache maven
+      get_url: dest={{ maven_archive }} url={{ download_url }}
     - name: unpack maven compressed file
-      unarchive: >
-        src=/home/kiarash/install/dev/apache/maven/apache-maven-3.2.2-bin.tar.gz
-        dest=/opt/
+      unarchive: src={{ maven_archive }} dest=/opt/ copy=no
     - name: create maven link
-      file: src=/opt/apache-maven-3.2.2 dest=/opt/maven state=link
+      file: src=/opt/apache-maven-3.3.3 dest=/opt/maven state=link
     - name: set maven environment
       copy: src=files/maven.sh dest=/etc/profile.d/maven.sh
