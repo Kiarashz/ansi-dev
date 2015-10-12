@@ -4,21 +4,28 @@
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
   <servers>
       <server>
-      <id>deploymentRepo</id>
-      <username>deployment</username>
-      <password>{/xL8oqpZOfsHxkwQ5Wrt/5KqSK9/LJHqo4gegdqrwBXX8ZTiC25VDJ61XbqQdizX}</password>
+       <id>local-release-repo</id>
+       <username>deployment</username>
+       <password>my-password</password>
+      </server>
+
+      <server>
+       <id>local-snapshot-repo</id>
+       <username>deployment</username>
+       <password>my-password</password>
+      </server>
+
+
+    <server>
+      <id>aws-release-repo</id>
+      <username>my-username</username>
+      <password>my-password</password>
     </server>
 
     <server>
-      <id>aws-release</id>
-      <username>AKIAIZ5NJZEWB25T6EYQ</username>
-      <password>BaTvwD/74RiIRzvKDZKVAetX1zK56dxxHy2rQnQD</password>
-    </server>
-
-    <server>
-      <id>aws-snapshot</id>
-      <username>AKIAIZ5NJZEWB25T6EYQ</username>
-      <password>BaTvwD/74RiIRzvKDZKVAetX1zK56dxxHy2rQnQD</password>
+      <id>aws-snapshot-repo</id>
+      <username>my-username</username>
+      <password>my-password</password>
     </server>
   </servers>
 

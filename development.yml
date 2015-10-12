@@ -16,4 +16,4 @@
     - name: set maven environment
       copy: src=files/maven.sh dest=/etc/profile.d/maven.sh
     - name: install open jdk 8
-      yum: name=java-1.8.0-openjdk
+      yum: name=java-1.8.0-openjdk-devel
