@@ -1,6 +1,6 @@
 ---
 - name: Install Apache Maven on CentOS vm
-  hosts: centos
+  hosts: all
   sudo: true
   vars:
     download_url: http://apache.mirror.serversaustralia.com.au/maven/maven-3/3.3.3/binaries/apache-maven-3.3.3-bin.tar.gz
@@ -9,11 +9,15 @@
   tasks:
     - name: Download apache maven
       get_url: dest={{ maven_archive }} url={{ download_url }}
+
     - name: unpack maven compressed file
       unarchive: src={{ maven_archive }} dest=/opt/ copy=no
+
     - name: create maven link
       file: src=/opt/apache-maven-3.3.3 dest=/opt/maven state=link
+
     - name: set maven environment
       copy: src=files/maven.sh dest=/etc/profile.d/maven.sh
+
     - name: install open jdk 8
       yum: name=java-1.8.0-openjdk
